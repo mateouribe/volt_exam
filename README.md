@@ -106,5 +106,5 @@ El servidor se ejecutará en: [http://localhost:1515](http://localhost:1515)
 
 ### Pruebas de la API
 
-- 1. Puedes usar **POSTMAN** (Collección ya compartida via email), sugiero seguir instrucciones adjuntas.
+- 1. Puedes usar **POSTMAN** con la colección https://exam11-0714.postman.co/workspace/EXAM-Workspace~a334238a-d1c7-4de0-9296-5490460d0376/collection/24804354-a3c7fdbe-ded8-4b03-833e-00b46640ae8b?action=share&creator=24804354, sugiero seguir instrucciones adjuntas.
 - 2. Puedes usar la extensión **REST Client** en VS Code con el archivo `test/testApi.rest` incluido en el proyecto.

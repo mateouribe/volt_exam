@@ -63,6 +63,54 @@ const getGroupedBooks = async (req, res) => {
   });
 };
 
+const getBookWithAuthorData = async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT * FROM books");
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: `Books have not been found.` });
+    }
+
+    //For every book create a promise
+    const authorFetchPromises = rows.map(async (book) => {
+      try {
+        const response = await fetch(
+          `https://openlibrary.org/authors/${book.author_id}.json`
+        );
+        const authorData = await response.json();
+
+        return {
+          book_id: book.id,
+          title: book.title,
+          author_id: book.author_id,
+          published_year: book.published_year,
+          author_data: authorData.error ? null : authorData, //If not found under id provided then set author_data to null
+        };
+      } catch (error) {
+        //If there is an error fetching the external API then return book with null author_data
+        console.error(`Error fetching author for book ${book.id}:`, error);
+        return {
+          book_id: book.id,
+          title: book.title,
+          author_id: book.author_id,
+          published_year: book.published_year,
+          author_data: null,
+        };
+      }
+    });
+
+    const booksWithAuthorData = await Promise.all(authorFetchPromises);
+
+    res.status(200).json({
+      message: "Books with author data fetched successfully",
+      data: booksWithAuthorData,
+    });
+  } catch (error) {
+    console.error("Error in getBookWithAuthorData:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 //* POST FUNCTIONS ----------------------------------------------------------
 const createBook = async (req, res) => {
   const { title, author_id, published_year } = req.body;
@@ -132,4 +180,5 @@ export {
   updateBook,
   deleteBook,
   getGroupedBooks,
+  getBookWithAuthorData,
 };

@@ -4,24 +4,26 @@ import {
   deleteBook,
   getAllBooks,
   getBookById,
+  getBookWithAuthorData,
   getGroupedBooks,
   updateBook,
 } from "../controllers/booksController.js";
 
 const router = express.Router();
 
-//* GET FUNCTIONS ----------------------------------------------------------
+//* GET ROUTES ----------------------------------------------------------
 router.get("/", getAllBooks);
 router.get("/grouped", getGroupedBooks);
+router.get("/authors_data", getBookWithAuthorData);
 router.get("/:id", getBookById);
 
-//* POST FUNCTIONS ----------------------------------------------------------
+//* POST ROUTES ----------------------------------------------------------
 router.post("/", createBook);
 
-//* PUT FUNCTIONS ----------------------------------------------------------
+//* PUT ROUTES ----------------------------------------------------------
 router.put("/:id", updateBook);
 
-//* DELETE FUNCTIONS ----------------------------------------------------------
+//* DELETE ROUTES ----------------------------------------------------------
 router.delete("/:id", deleteBook);
 
 export default router;

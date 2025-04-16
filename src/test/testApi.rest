@@ -1,11 +1,16 @@
+###* GET ----------------------------------------------------
 ###* GET ENTRY POINT
 GET http://localhost:1515/
 
 ###* GET - Get all books
 GET http://localhost:1515/books/
 
+###* GET - Get all books with autor data
+
+GET http://localhost:1515/books/authors_data
+
 ###* GET - Get book by ID
-GET http://localhost:1515/books/5
+GET http://localhost:1515/books/2
 
 
 ###* GET - Get grouped books
@@ -17,16 +22,20 @@ GET http://localhost:1515/authors
 
 
 
+
+###* POST ----------------------------------------------------
 ###* POST - Create new Book
 POST http://localhost:1515/books/
 Content-Type: application/json
 
 {
-     "title": "AAAAA",
-     "author_id": "fdads",
+     "title": "Book #3",
+     "author_id": "PO",
      "published_year": 2003
 }
 
+
+###* PUT  ----------------------------------------------------
 ###* PUT - Update book by ID
 PUT http://localhost:1515/books/3
 Content-Type: application/json
@@ -38,6 +47,8 @@ Content-Type: application/json
 }
 
 
+
+###* DELETE ----------------------------------------------------
 ###* DELETE - Delete book by ID
 DELETE http://localhost:1515/books/3
 

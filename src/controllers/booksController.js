@@ -150,6 +150,36 @@ const createBook = async (req, res) => {
   }
 };
 
+const createMultipleBooks = async (req, res) => {
+  try {
+    const books = req.body;
+
+    // Validate body is an array and not empty
+    if (!Array.isArray(books) || books.length === 0) {
+      return res.status(400).json({ message: "Invalid input data" });
+    }
+
+    // Insert each book
+    const insertPromises = books.map((book) => {
+      const { title, author_id, published_year } = book;
+      return pool.query(
+        "INSERT INTO books (title, author_id, published_year) VALUES (?, ?, ?)",
+        [title, author_id, published_year]
+      );
+    });
+
+    await Promise.all(insertPromises);
+
+    res.status(201).json({
+      message: "Books created successfully",
+      data: books,
+    });
+  } catch (error) {
+    console.error("Error while creating books:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 //* PUT FUNCTIONS ----------------------------------------------------------
 const updateBook = async (req, res) => {
   try {
@@ -207,6 +237,7 @@ export {
   getAllBooks,
   getBookById,
   createBook,
+  createMultipleBooks,
   updateBook,
   deleteBook,
   getGroupedBooks,

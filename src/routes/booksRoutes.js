@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createBook,
+  createMultipleBooks,
   deleteBook,
   getAllBooks,
   getBookById,
@@ -19,6 +20,7 @@ router.get("/:id", getBookById);
 
 //* POST ROUTES ----------------------------------------------------------
 router.post("/", createBook);
+router.post("/multiple", createMultipleBooks);
 
 //* PUT ROUTES ----------------------------------------------------------
 router.put("/:id", updateBook);

@@ -1,6 +1,7 @@
 import express from "express";
 import { initializeDatabase } from "./db.js";
 import booksRoutes from "./routes/booksRoutes.js";
+import authorsRoutes from "./routes/authorsRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 1515;
@@ -11,6 +12,7 @@ app.use(express.json());
 
 //* ROUTES
 app.use("/books", booksRoutes);
+app.use("/authors", authorsRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({

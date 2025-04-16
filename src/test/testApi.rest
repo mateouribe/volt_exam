@@ -8,6 +8,10 @@ GET http://localhost:1515/books/
 GET http://localhost:1515/books/3
 
 
+###* GET - Get book by title
+GET http://localhost:1515/authors
+
+
 
 
 ###* POST - Create new Book

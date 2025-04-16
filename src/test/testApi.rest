@@ -1,0 +1,37 @@
+###* GET ENTRY POINT
+GET http://localhost:1515/
+
+###* GET - Get all books
+GET http://localhost:1515/books/
+
+###* GET - Get book by ID
+GET http://localhost:1515/books/3
+
+
+
+
+###* POST - Create new Book
+POST http://localhost:1515/books/
+Content-Type: application/json
+
+{
+     "title": "Dogs of War",
+     "author_id": "OL1470S704A",
+     "published_year": 1928
+}
+
+###* PUT - Update book by ID
+PUT http://localhost:1515/books/3
+Content-Type: application/json
+
+{
+     "title": "Dogs of Peace",
+     "author_id": "OL14706704A",
+     "published_year": 1928
+}
+
+
+###* DELETE - Delete book by ID
+DELETE http://localhost:1515/books/3
+
+

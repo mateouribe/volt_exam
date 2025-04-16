@@ -16,10 +16,13 @@ const getBookById = async (req, res) => {
   if (rows.length === 0) {
     return res
       .status(404)
-      .json({ message: `Book with id "${id}" has not been found.` });
+      .json({ message: `Book with id ${id} has not been found.` });
   }
 
-  res.json(rows[0]);
+  res.status(200).json({
+    message: "Books fetched successfully",
+    book: rows[0],
+  });
 };
 
 //* POST FUNCTIONS ----------------------------------------------------------
@@ -54,7 +57,7 @@ const updateBook = async (req, res) => {
   if (result.affectedRows === 0) {
     return res
       .status(404)
-      .json({ message: `Book with id "${id}" has not been found.` });
+      .json({ message: `Book with id ${id} has not been found.` });
   }
 
   res.status(200).json({
@@ -76,7 +79,7 @@ const deleteBook = async (req, res) => {
   if (result.affectedRows === 0) {
     return res
       .status(404)
-      .json({ message: `Book with id "${id}" has not been found.` });
+      .json({ message: `Book with id ${id} has not been found.` });
   }
 
   res.status(200).json({

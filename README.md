@@ -1,4 +1,4 @@
-# PRUEBA JR BACKEND DEVELOPER - VOLT
+# PRUEBA - VOLT
 
 Esta es una API RESTful construida con **Node.js**, **Express** y **MySQL**, diseñada para gestionar libros y sus autores. Permite realizar operaciones CRUD sobre los libros, agruparlos por década y obtener datos de autores desde la [API de Open Library](https://openlibrary.org/developers/api).
 

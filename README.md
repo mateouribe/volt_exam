@@ -39,7 +39,7 @@ Esta es una API RESTful construida con **Node.js**, **Express** y **MySQL**, dis
 │   │   ├── booksRoutes.js
 │   │   └── authorsRoutes.js
 │   ├── test/
-│   │   └── testApi.rest       # Archivo para pruebas con REST Client
+│       └── testApi.rest       # Archivo para pruebas con REST Client
 └── package.json
 ```
 

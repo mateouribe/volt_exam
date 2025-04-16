@@ -39,7 +39,7 @@ Esta es una API RESTful construida con **Node.js**, **Express** y **MySQL**, dis
 │   │   ├── booksRoutes.js
 │   │   └── authorsRoutes.js
 │   ├── test/
-│   │   └── testApi.rest       # Archivo para pruebas con REST Client
+│       └── testApi.rest       # Archivo para pruebas con REST Client
 └── package.json
 ```
 
@@ -106,6 +106,5 @@ El servidor se ejecutará en: [http://localhost:1515](http://localhost:1515)
 
 ### Pruebas de la API
 
-Puedes usar la extensión **REST Client** en VS Code con el archivo `test/testApi.rest` incluido en el proyecto.
-
-También puedes probar con Postman, Insomnia o `curl`.
+- 1. Puedes usar **POSTMAN** (Collección ya compartida via email), sugiero seguir instrucciones adjuntas.
+- 2. Puedes usar la extensión **REST Client** en VS Code con el archivo `test/testApi.rest` incluido en el proyecto.

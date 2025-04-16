@@ -9,6 +9,9 @@ GET http://localhost:1515/books/3
 
 
 ###* GET - Get book by title
+GET http://localhost:1515/books/grouped
+
+###* GET - Get book by title
 GET http://localhost:1515/authors
 
 
@@ -19,9 +22,9 @@ POST http://localhost:1515/books/
 Content-Type: application/json
 
 {
-     "title": "Dogs of War",
-     "author_id": "OL1470S704A",
-     "published_year": 1928
+     "title": "fads fads s",
+     "author_id": "fdads",
+     "published_year": 2005
 }
 
 ###* PUT - Update book by ID

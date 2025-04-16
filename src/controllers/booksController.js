@@ -25,6 +25,42 @@ const getBookById = async (req, res) => {
   });
 };
 
+const getGroupedBooks = async (req, res) => {
+  const [rows] = await pool.query(
+    `SELECT 10*FLOOR(published_year/10) AS decade, 
+      id, title, author_id, published_year
+      FROM books 
+      ORDER BY title ASC`
+  );
+
+  if (rows.length === 0) {
+    return res.status(404).json({ message: `Books have not been found.` });
+  }
+
+  let groupedBooks = {};
+
+  for (const book of rows) {
+    const decade = `${book.decade}s`;
+
+    //If decate does not exist yet, then create it
+    if (!groupedBooks[decade]) {
+      groupedBooks[decade] = [];
+    }
+
+    groupedBooks[decade].push({
+      id: book.id,
+      title: book.title,
+      author_id: book.author_id,
+      published_year: book.published_year,
+    });
+  }
+
+  res.status(200).json({
+    message: "Books fetched successfully",
+    data: groupedBooks,
+  });
+};
+
 //* POST FUNCTIONS ----------------------------------------------------------
 const createBook = async (req, res) => {
   const { title, author_id, published_year } = req.body;
@@ -87,4 +123,11 @@ const deleteBook = async (req, res) => {
   });
 };
 
-export { getAllBooks, getBookById, createBook, updateBook, deleteBook };
+export {
+  getAllBooks,
+  getBookById,
+  createBook,
+  updateBook,
+  deleteBook,
+  getGroupedBooks,
+};

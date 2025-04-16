@@ -5,10 +5,10 @@ GET http://localhost:1515/
 GET http://localhost:1515/books/
 
 ###* GET - Get book by ID
-GET http://localhost:1515/books/3
+GET http://localhost:1515/books/5
 
 
-###* GET - Get book by title
+###* GET - Get grouped books
 GET http://localhost:1515/books/grouped
 
 ###* GET - Get book by title
@@ -22,9 +22,9 @@ POST http://localhost:1515/books/
 Content-Type: application/json
 
 {
-     "title": "fads fads s",
+     "title": "AAAAA",
      "author_id": "fdads",
-     "published_year": 2005
+     "published_year": 2003
 }
 
 ###* PUT - Update book by ID

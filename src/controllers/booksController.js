@@ -26,6 +26,7 @@ const getBookById = async (req, res) => {
 };
 
 const getGroupedBooks = async (req, res) => {
+  //Ref to get decade -- https://stackoverflow.com/questions/65915114/having-issues-summarizing-years-as-decades-in-mysql
   const [rows] = await pool.query(
     `SELECT 10*FLOOR(published_year/10) AS decade, 
       id, title, author_id, published_year
@@ -47,6 +48,7 @@ const getGroupedBooks = async (req, res) => {
       groupedBooks[decade] = [];
     }
 
+    //Else push the book to the decade
     groupedBooks[decade].push({
       id: book.id,
       title: book.title,

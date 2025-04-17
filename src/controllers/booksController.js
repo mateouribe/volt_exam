@@ -6,7 +6,7 @@ const getAllBooks = async (req, res) => {
     const [rows] = await pool.query("SELECT * FROM books");
     res.status(200).json({
       message: "Books fetched successfully",
-      books: rows,
+      data: rows,
     });
   } catch (error) {
     console.error("Error while fetching books:", error);
@@ -27,7 +27,7 @@ const getBookById = async (req, res) => {
 
     res.status(200).json({
       message: "Books fetched successfully",
-      book: rows[0],
+      data: rows[0],
     });
   } catch (error) {
     console.error(`Error while fetching book with id ${id}:`, error);
